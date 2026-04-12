@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { pool } from '../api/index.js';
+import { pool } from '../index.js';
 import axios from 'axios';
 import { getBanner, getBenefit, getISP, getPartner, getServer, getTheme, getUpgrade } from '../repositories/reposotory.js';
 import { main } from '../services/gemini.js';

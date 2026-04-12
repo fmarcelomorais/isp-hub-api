@@ -4,7 +4,7 @@ import cors from 'cors';
 import pg from 'pg';
 import serverless from 'serverless-http';
 
-import router from '../routes/rotas.js';
+import router from './routes/rotas.js';
 
 const { Pool } = pg;
 
