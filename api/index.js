@@ -4,7 +4,7 @@ import cors from 'cors';
 import pg from 'pg';
 import serverless from 'serverless-http';
 
-import router from './routes/rotas.js';
+//import router from './routes/rotas.js';
 
 const { Pool } = pg;
 
@@ -54,7 +54,7 @@ app.get('/test', async (req, res) => {
 });
 
 // ✅ Suas rotas principais
-app.use('/', router);
+//app.use('/', router);
 
 // ❌ NÃO usar app.listen na Vercel
 
