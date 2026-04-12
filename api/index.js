@@ -22,7 +22,7 @@ app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // ✅ Suas rotas principais
 app.use('/api/auth', auth);
-app.use('/api/home', routerHome);
+//app.use('/api/home', routerHome);
 app.use('/api/clientes', cliente);
 app.use('/api/faturas', faturas);
 app.use('/api/suporte', suporte);
