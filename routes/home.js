@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { getISP,getServer, getTheme} from '../repositories/reposotory.js';
+import { getISP, getServer, getTheme} from '../repositories/reposotory.js';
 
 const routerHome = Router();
 
-routerHome.get('/home', (req, res) => {
+routerHome.get('/', (req, res) => {
   res.send('Rota Home');
 });
 

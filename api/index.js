@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Suas rotas principais
-app.use('/api/home', routerHome);
+app.use('/home', routerHome);
 
 // ✅ Export serverless
 export default serverless(app);
