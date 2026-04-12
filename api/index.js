@@ -21,11 +21,11 @@ app.use((req, res, next) => {
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // ✅ Suas rotas principais
-app.use('/auth', auth);
-app.use('/home', routerHome);
-app.use('/clientes', cliente);
-app.use('/faturas', faturas);
-app.use('/suporte', suporte);
+app.use('/api/auth', auth);
+app.use('/api/home', routerHome);
+app.use('/api/clientes', cliente);
+app.use('/api/faturas', faturas);
+app.use('/api/suporte', suporte);
 
 app.use((req, res) => {
     res.status(404).json({ 
