@@ -16,9 +16,9 @@ routerHome.get('/servidor', async (req, res) => {
 routerHome.get('/init/:codigo_isp', async (req, res) => {
 
     const { codigo_isp } = req.params;
-
-    const ispResult = await getISP(codigo_isp); 
-    const themeResult = await getTheme(codigo_isp);
+    const [ispResult, themeResult] = await Promise.all([getISP(codigo_isp), getTheme(codigo_isp)]);
+    //const ispResult = await getISP(codigo_isp); 
+    //const themeResult = await getTheme(codigo_isp);
    
     const isp = {
         codigoISP: ispResult.codigo_isp,
