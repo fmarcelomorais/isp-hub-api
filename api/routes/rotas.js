@@ -329,6 +329,7 @@ router.post('/chamados/abrir/:token', async (req, res) => {
 })
 
 router.post('/suporte/chat/:mensagem', async (req, res) => {
+    
     const { mensagem } = req.params;
 
     //const mensagem = "Olá, como posso ajudar no suporte técnico hoje?";
