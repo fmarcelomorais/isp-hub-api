@@ -17,9 +17,9 @@ const getIspConfig = async (receitanet_id) => {
 
 const BASE_URL = "https://api.receitanet.net/centralassinante/v1"
 
-router.get('/', (req, res) => {
+/* router.get('/', (req, res) => {
   res.send('API rodando e conectada ao Postgres! 🚀');
-});
+}); */
 
 router.get('/servidor', async (req, res) => {
     
