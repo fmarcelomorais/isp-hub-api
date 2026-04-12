@@ -36,7 +36,7 @@ app.use(cors());
 app.use(express.json());
 
 // 👇 usa suas rotas
-app.use('/api', router);
+app.use('/', router);
 
 // rota teste
 app.get('/test', async (req, res) => {
