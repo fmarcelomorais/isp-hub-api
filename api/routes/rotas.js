@@ -1,4 +1,4 @@
-import { Router } from 'express';
+/* import { Router } from 'express';
 import { pool } from '../index.js';
 import axios from 'axios';
 import { getBanner, getBenefit, getISP, getPartner, getServer, getTheme, getUpgrade } from '../repositories/reposotory.js';
@@ -17,9 +17,6 @@ const getIspConfig = async (receitanet_id) => {
 
 const BASE_URL = "https://api.receitanet.net/centralassinante/v1"
 
-/* router.get('/', (req, res) => {
-  res.send('API rodando e conectada ao Postgres! 🚀');
-}); */
 
 router.get('/servidor', async (req, res) => {
     
@@ -186,7 +183,7 @@ router.get('/upgrade/:codigo_isp', async ( req, res) => {
     res.json(upgrade)
 })
 
-// TOKEN
+
 router.get('/token/:codigo_isp/:cpf', async (req, res) => {
 
     const { codigo_isp, cpf,  } = req.params;    
@@ -240,7 +237,7 @@ router.post('/multiplos/token/:receitanet_id/:cpf/:id_cliente', async (req, res)
     }
 })
 
-// ROTA DE CLIENTE 
+ 
 router.get('/cliente/resumo/:token', async (req, res) => {
     const { token } = req.params;
     
@@ -261,7 +258,7 @@ router.get('/cliente/resumo/:token', async (req, res) => {
     }
 })
 
-// --- ROTA 1: BUSCAR FATURAS (Básico) ---
+
 router.get('/faturas/:token', async (req, res) => {
     const {token} = req.params;
 
@@ -281,7 +278,7 @@ router.get('/faturas/:token', async (req, res) => {
 })
 
 
-//CHAMADOS
+
 router.get('/chamados/:token', async (req, res) => {
     const {token} = req.params;
 
@@ -332,9 +329,8 @@ router.post('/suporte/chat/:mensagem', async (req, res) => {
     
     const { mensagem } = req.params;
 
-    //const mensagem = "Olá, como posso ajudar no suporte técnico hoje?";
     const gemini = await main(mensagem)
     res.json(gemini)
 })
 
-export default router;
+export default router; */
