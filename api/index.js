@@ -3,49 +3,63 @@ import express from 'express';
 import cors from 'cors';
 import pg from 'pg';
 import serverless from 'serverless-http';
+
 import router from '../routes/rotas.js';
 
 const { Pool } = pg;
 
 const app = express();
 
-// ⚠️ conexão global (evita recriar a cada request)
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-});
+// ✅ Pool GLOBAL (evita recriar conexão)
+let pool;
 
-// 🔥 Teste opcional (executa uma vez)
-let isConnected = false;
-
-async function testConnection() {
-  if (!isConnected) {
-    try {
-      await pool.query('SELECT NOW()');
-      console.log('✅ Conectado ao Supabase com sucesso!');
-      isConnected = true;
-    } catch (err) {
-      console.error('❌ Erro ao conectar no Supabase:', err.message);
-    }
-  }
+if (!global.pool) {
+  global.pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+  });
 }
 
-testConnection();
+pool = global.pool;
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// 👇 usa suas rotas
-app.use('/', router);
-
-// rota teste
-app.get('/test', async (req, res) => {
-  const result = await pool.query('SELECT NOW()');
-  res.json({ serverTime: result.rows[0] });
+// ✅ Rota raiz (debug rápido)
+app.get('/', (req, res) => {
+  res.send('🚀 ISP HUB API online');
 });
 
-// 👇 ESSENCIAL PRA VERCEL
+// ✅ Rota ping (teste sem banco)
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
+// ✅ Rota test com proteção (evita timeout)
+app.get('/test', async (req, res) => {
+  try {
+    const result = await Promise.race([
+      pool.query('SELECT NOW()'),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('DB timeout')), 5000)
+      )
+    ]);
+
+    res.json({ serverTime: result.rows[0] });
+  } catch (err) {
+    console.error('Erro /test:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ✅ Suas rotas principais
+app.use('/', router);
+
+// ❌ NÃO usar app.listen na Vercel
+
+// ✅ Export serverless
 export default serverless(app);
 
-// 👇 se quiser usar o pool em outros arquivos
+// ✅ Export pool (uso nos repositories)
 export { pool };
