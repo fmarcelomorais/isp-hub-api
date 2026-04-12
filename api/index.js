@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import pg from 'pg';
 import serverless from 'serverless-http';
+import routerHome from '../routes/home.js';
 
 //import router from '../routes/rotas.js'
 
@@ -26,16 +27,11 @@ pool = global.pool;
 app.use(cors());
 app.use(express.json());
 
-export default function handler(req, res) {
-  res.status(200).send('FUNCIONANDO 🚀');
-}
 // ✅ Suas rotas principais
-//app.use('/', router);
-
-// ❌ NÃO usar app.listen na Vercel
+app.use('/api/home', routerHome);
 
 // ✅ Export serverless
-//export default serverless(app);
+export default serverless(app);
 
 // ✅ Export pool (uso nos repositories)
 export { pool };
