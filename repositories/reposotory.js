@@ -1,4 +1,4 @@
-import { pool } from '../server.js';
+import { pool } from '../api/index.js';
 
 export async function getServer() {
     const sql = 'SELECT nome, servidor, ativo FROM servidores WHERE ativo = true';
