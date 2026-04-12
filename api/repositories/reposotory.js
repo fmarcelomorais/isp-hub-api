@@ -1,4 +1,4 @@
-import { pool } from '../index.js';
+/* import { pool } from '../index.js';
 
 export async function getServer() {
     const sql = 'SELECT nome, servidor, ativo FROM servidores WHERE ativo = true';
@@ -75,4 +75,4 @@ export async function getUpgrade(codigo_isp) {
     const result = await pool.query(sql, [codigo_isp]);
 
     return result.rows[0]
-}
+} */
