@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import axios from 'axios';
-import { getISP } from '../repositories/reposotory';
+import { getISP } from '../repositories/reposotory.js';
 
 const auth = Router();
 
