@@ -36,7 +36,7 @@ auth.post('/multiplos/token/:receitanet_id/:cpf/:id_cliente', async (req, res) =
     const { receitanet_id, cpf, id_cliente } = req.params;
     
     try{
-        const config = await getIspConfig(receitanet_id);
+        const config = await getISP(receitanet_id);
 
         if (!config || !config.ativo) {
             return res.status(404).json({ error: 'Provedor inativo ou não encontrado' });
