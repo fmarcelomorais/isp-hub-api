@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import axios from 'axios';
+import { getISP } from '../repositories/reposotory';
 
 const auth = Router();
 
@@ -7,9 +8,9 @@ const BASE_URL = "https://api.receitanet.net/centralassinante/v1"
 
 auth.get('/token/:codigo_isp/:cpf', async (req, res) => {
 
-    const { codigo_isp, cpf,  } = req.params;    
+    const { codigo_isp, cpf  } = req.params;    
   
-    const config = await getIspConfig(codigo_isp);
+    const config = await getISP(codigo_isp);
 
     if (!config || !config.ativo) {
         return res.status(404).json({ error: 'Provedor inativo ou não encontrado' });
