@@ -23,11 +23,11 @@ app.use((req, res, next) => {
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.use('/api/ixc', ixc);
 // ✅ Suas rotas principais
-//app.use('/api/auth', auth);
-//app.use('/api/home', routerHome);
-//app.use('/api/clientes', cliente);
-//app.use('/api/faturas', faturas);
-//app.use('/api/suporte', suporte);
+app.use('/api/auth', auth);
+app.use('/api/home', routerHome);
+app.use('/api/clientes', cliente);
+app.use('/api/faturas', faturas);
+app.use('/api/suporte', suporte);
 
 
 app.get('/', (req, res) => res.json({ status: "online" }));
