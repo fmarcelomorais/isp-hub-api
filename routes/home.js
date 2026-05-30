@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getBenefit, getISP, getServer, getTheme, getUpgrade} from '../repositories/reposotory.js';
+import { getBanner, getBenefit, getISP, getPartner, getServer, getTheme, getUpgrade} from '../repositories/reposotory.js';
 
 const routerHome = Router();
 
